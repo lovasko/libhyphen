@@ -74,6 +74,6 @@ int cofa_run(
 /// Convert an error code to an English description.
 int cofa_err(
   cofa* cli,          ///< Command-line interface.
-  int code,           ///< Function return/error code.
+  const int code,     ///< Function return/error code.
   const char** estr   ///< English description.
 );
