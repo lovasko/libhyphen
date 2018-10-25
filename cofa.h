@@ -11,7 +11,7 @@
 /// Command-line interface.
 typedef struct cofa cofa;
 
-/// Create a new command.
+/// Create and (possibly) attach a new command.
 int cofa_cmd(
   cofa* cli,           ///< Command-line interface.
   uint64_t* cid,       ///< New returned command ID.
@@ -22,7 +22,7 @@ int cofa_cmd(
   const char* help,    ///< Usage help text.
 );
 
-/// Create a new option.
+/// Create and attach a new option.
 int cofa_opt(
   cofa* cli,           ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
@@ -34,7 +34,7 @@ int cofa_opt(
   const char* help     ///< Usage help text.
 );
 
-/// Create a new flag.
+/// Create and attach a new flag.
 int cofa_flg(
   cofa* cli,           ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
@@ -45,6 +45,7 @@ int cofa_flg(
   const char* help     ///< Usage help text.
 );
 
+/// Create and attach a new argument.
 int cofa_arg(
   cofa* cli,           ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
