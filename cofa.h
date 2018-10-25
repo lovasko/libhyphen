@@ -41,7 +41,7 @@ int cofa_flg(
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
   const uint64_t rmin, ///< Minimal number of repeats.
-  const uint64_t rmax  ///< Maximal number of repeats.
+  const uint64_t rmax, ///< Maximal number of repeats.
   const char* help     ///< Usage help text.
 );
 
@@ -56,7 +56,7 @@ int cofa_arg(
 
 /// Skip a number of bytes in the storage structure.
 int cofa_pad(
-  cofa* cli;           ///< Command-line interface.
+  cofa* cli,           ///< Command-line interface.
   const uint64_t cid,  ///< Command ID.
   const size_t size    ///< Number of bytes to skip.
 );
@@ -68,7 +68,7 @@ int cofa_run(
   const uint64_t rcid, ///< Root command ID (name used as program name).
   const int argc,      ///< Argument count.
   const char* argv[],  ///< Argument vector.
-  uint64_t* scmd;      ///< Selected command ID.
+  uint64_t* scid       ///< Selected command ID.
 );
 
 /// Convert an error code to an English description.
