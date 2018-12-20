@@ -17,8 +17,8 @@ uint8_t cliff_cmd(
   uint64_t* cid,       ///< New returned command ID.
   const uint64_t pcid, ///< Parent command ID to attach to (0 for no parent).
   const char* name,    ///< Name.
-  void* ptr,           ///< Storage pointer.
-  const size_t size    ///< Storage size.
+  void* ptr,           ///< Storage structure pointer.
+  const size_t size    ///< Storage structure size.
   const char* help,    ///< Usage help text.
 );
 
