@@ -9,11 +9,11 @@
 
 
 /// Command-line interface.
-typedef struct cofa cofa;
+typedef struct cliff cliff;
 
 /// Create and (possibly) attach a new command.
-int cofa_cmd(
-  cofa* cli,           ///< Command-line interface.
+int cliff_cmd(
+  cliff* cli,          ///< Command-line interface.
   uint64_t* cid,       ///< New returned command ID.
   const uint64_t pcid, ///< Parent command ID to attach to (0 for no parent).
   const char* name,    ///< Name.
@@ -23,8 +23,8 @@ int cofa_cmd(
 );
 
 /// Create and attach a new option.
-int cofa_opt(
-  cofa* cli,           ///< Command-line interface.
+int cliff_opt(
+  cliff* cli,          ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
@@ -35,8 +35,8 @@ int cofa_opt(
 );
 
 /// Create and attach a new flag.
-int cofa_flg(
-  cofa* cli,           ///< Command-line interface.
+int cliff_flg(
+  cliff* cli,          ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
@@ -46,8 +46,8 @@ int cofa_flg(
 );
 
 /// Create and attach a new argument.
-int cofa_arg(
-  cofa* cli,           ///< Command-line interface.
+int cliff_arg(
+  cliff* cli,          ///< Command-line interface.
   const uint64_t cid,  ///< Command ID to attach to.
   const char* name,    ///< Name.
   const uint64_t cnt,  ///< Number of repeats (UINT64_MAX for all remaining).
@@ -55,16 +55,16 @@ int cofa_arg(
 );
 
 /// Skip a number of bytes in the storage structure.
-int cofa_pad(
-  cofa* cli,           ///< Command-line interface.
+int cliff_pad(
+  cliff* cli,          ///< Command-line interface.
   const uint64_t cid,  ///< Command ID.
   const size_t size    ///< Number of bytes to skip.
 );
 
 /// Parse the command-line arguments. This function frees all memory allocated
 /// the build functions.
-int cofa_run(
-  cofa* cli,           ///< Command-line interface.
+int cliff_run(
+  cliff* cli,          ///< Command-line interface.
   const uint64_t rcid, ///< Root command ID (name used as program name).
   const int argc,      ///< Argument count.
   const char* argv[],  ///< Argument vector.
@@ -72,8 +72,8 @@ int cofa_run(
 );
 
 /// Convert an error code to an English description.
-void cofa_err(
-  cofa* cli,          ///< Command-line interface.
+void cliff_err(
+  cliff* cli,         ///< Command-line interface.
   const int code,     ///< Function return/error code.
   const char** estr   ///< English description.
 );
