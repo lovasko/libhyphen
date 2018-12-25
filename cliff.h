@@ -18,8 +18,8 @@ uint8_t cliff_cmd(
   const uint64_t pcid, ///< Parent command ID to attach to (0 for no parent).
   const char* name,    ///< Name.
   void* ptr,           ///< Storage structure pointer.
-  const size_t size    ///< Storage structure size.
-  const char* help,    ///< Usage help text.
+  const size_t size,   ///< Storage structure size.
+  const char* help     ///< Usage help text.
 );
 
 /// Create and attach a new option.
