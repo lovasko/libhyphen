@@ -5,15 +5,15 @@
 // license is in the file LICENSE, distributed as part of this software.
 
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include <inttypes.h>
 
 #include "../hyphen.h"
 
 
 /// Storage structure for the command-line interface.
 struct storage {
-  bool st_verbose;
+  uint64_t st_vrb; ///< Verbose flag.
+  uint64_t st_rcv; ///< Recursive flag.
 };
 
 /// Test of a single non-repeatable short flag.
@@ -34,7 +34,8 @@ main(void)
   argc    = 2;
 
   // Prepare the storage structure.
-  st.st_verbose = false;
+  st.st_vrb = 0;
+  st.st_rcv = 0;
 
   // Create a root command.
   ret = hyphen_cmd(&cli, &root, 0, "ft01", &st, sizeof(st), "Flag test 01");
@@ -52,6 +53,14 @@ main(void)
     return EXIT_FAILURE;
   }
 
+  // Skip the following flag.
+  ret = hyphen_pad(&cli, root, sizeof(uint64_t));
+  if (ret != HYPHEN_OK) {
+    hyphen_err(&cli, ret, &estr);
+    printf("adding padding failed: %s\n", estr);
+    return EXIT_FAILURE;
+  }
+
   // Parse the command-line.
   ret = hyphen_run(&cli, root, argc, argv);
   if (ret != HYPHEN_OK) {
@@ -61,8 +70,10 @@ main(void)
   }
 
   // Verify the value in the storage structure.
-  if (st.st_verbose != true) {
-    printf("expected st_verbose to be true\n");
+  if (st.st_verbose == 0 || st.st_recursive > 0) {
+    printf("expected 'st_vrb' = 1, 'st_rcv' = 0\n");
+    printf("actual   'st_vrb' = %" PRIu64 ", 'st_rcv' = %" PRIu64 "\n",
+      st.st_vrb, st.st_rcv);
     return EXIT_FAILURE;
   }
 
