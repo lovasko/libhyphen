@@ -54,9 +54,9 @@ uint8_t hyphen_arg(
 
 /// Skip a number of bytes in the storage structure.
 uint8_t hyphen_pad(
-  hyphen* cli,         ///< Command-line interface.
-  const uint64_t cid,  ///< Command ID.
-  const size_t size    ///< Number of bytes to skip.
+  hyphen* cli,        ///< Command-line interface.
+  const uint64_t cid, ///< Command ID.
+  const size_t pad    ///< Number of bytes to skip.
 );
 
 /// Parse the command-line arguments. This function frees all memory allocated
