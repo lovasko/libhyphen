@@ -29,7 +29,6 @@ uint8_t hyphen_opt(
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
   const char* mvar,    ///< Meta variable name.
-  const uint64_t rmin, ///< Minimal number of repeats.
   const uint64_t rmax, ///< Maximal number of repeats.
   const char* help     ///< Usage help text.
 );
@@ -40,7 +39,6 @@ uint8_t hyphen_flg(
   const uint64_t cid,  ///< Command ID to attach to.
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
-  const uint64_t rmin, ///< Minimal number of repeats.
   const uint64_t rmax, ///< Maximal number of repeats.
   const char* help     ///< Usage help text.
 );
