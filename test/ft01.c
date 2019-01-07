@@ -37,6 +37,14 @@ main(void)
   st.st_vrb = 0;
   st.st_rcv = 0;
 
+  // Reset the interface.
+  ret = hyphen_rst(&cli);
+  if (ret != HYPHEN_OK) {
+    hyphen_err(&cli, ret, &estr);
+    printf("reseting the interface failed: %s\n", estr);
+    return EXIT_FAILURE;
+  }
+
   // Create a root command.
   ret = hyphen_cmd(&cli, &root, 0, "ft01", &st, sizeof(st), "Flag test 01");
   if (ret != HYPHEN_OK) {
