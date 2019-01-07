@@ -11,6 +11,11 @@
 /// Command-line interface.
 typedef struct hyphen hyphen;
 
+/// Reset the command-line interface.
+void hyphen_rst(
+  hyphen* cli          ///< Command-line interface.
+);
+
 /// Create and (possibly) attach a new command.
 uint8_t hyphen_cmd(
   hyphen* cli,         ///< Command-line interface.
