@@ -12,7 +12,7 @@
 typedef struct hyphen hyphen;
 
 /// Reset the command-line interface.
-void hyphen_rst(
+int8_t hyphen_rst(
   hyphen* cli          ///< Command-line interface.
 );
 
