@@ -64,8 +64,7 @@ uint8_t hyphen_pad(
   const size_t pad    ///< Number of bytes to skip.
 );
 
-/// Parse the command-line arguments. This function frees all memory allocated
-/// the build functions.
+/// Parse the command-line arguments.
 uint8_t hyphen_run(
   hyphen* cli,         ///< Command-line interface.
   const uint64_t rcid, ///< Root command ID (name used as program name).
