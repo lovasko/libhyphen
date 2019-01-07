@@ -6,7 +6,9 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "hyphen.h"
 
@@ -92,7 +94,22 @@ struct hyphen {
 static bool
 valid_name(const char* str, const size_t len)
 {
-  if ( 
+  size_t i;
+
+  // Check whether the string contains at least one character.
+  if (str == NULL || str[0] == '\0')
+    return false;
+
+  // Make sure that the first character is not a hyphen.
+  if (str[0] == '-')
+    return false;
+
+  // Verify that the string consists only of alphanumeric characters or a dash.
+  for (i = 0; i < len; i++)
+    if (isalnum(str[i]) == 0 || str[i] != '-')
+      return false;
+
+  return true;
 }
 
 /// Reset the command-line interface.
