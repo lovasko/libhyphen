@@ -6,10 +6,11 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 
 /// Command-line interface.
-typedef struct hyphen hyphen;
+struct hyphen;
 
 /// Reset the command-line interface.
 uint8_t hyphen_rst(
@@ -33,17 +34,7 @@ uint8_t hyphen_opt(
   const uint64_t cid,  ///< Command ID to attach to.
   const char shtn,     ///< Short name (\0 for no short name).
   const char* lngn,    ///< Long name (NULL for no long name).
-  const char* mvar,    ///< Meta variable name.
-  const uint64_t rmax, ///< Maximal number of repeats.
-  const char* help     ///< Usage help text.
-);
-
-/// Create and attach a new flag.
-uint8_t hyphen_flg(
-  hyphen* cli,         ///< Command-line interface.
-  const uint64_t cid,  ///< Command ID to attach to.
-  const char shtn,     ///< Short name (\0 for no short name).
-  const char* lngn,    ///< Long name (NULL for no long name).
+  const char* parn,    ///< Parameter name (NULL if there isn't one).
   const uint64_t rmax, ///< Maximal number of repeats.
   const char* help     ///< Usage help text.
 );
